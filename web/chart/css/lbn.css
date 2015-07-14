@@ -1,0 +1,97 @@
+/*
+.todo-item.selected {
+  background: #f0f6f8;
+  color: #a972bc;
+  transform:scale(1.0,1.0);
+}
+*/
+
+.red .ui-widget-header {
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#f00), to(#d00));
+  background: -moz-linear-gradient(top, #f00, #d00);
+  background: -webkit-linear-gradient(top, #f00, #d00);
+  background: -o-linear-gradient(top, #f00, #d00);
+  background: -webkit-linear-gradient(to bottom, #f00, #d00);
+}
+.blue .ui-widget-header {
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#00f), to(#00d));
+  background: -moz-linear-gradient(top, #00f, #00d);
+  background: -webkit-linear-gradient(top, #00f, #00d);
+  background: -o-linear-gradient(top, #00f, #00d);
+  background: -webkit-linear-gradient(to bottom, #00f, #00d);
+}
+.green .ui-widget-header {
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#0f0), to(#0d0));
+  background: -moz-linear-gradient(top, #0f0, #0d0);
+  background: -webkit-linear-gradient(top, #0f0, #0d0);
+  background: -o-linear-gradient(top, #0f0, #0d0);
+  background: -webkit-linear-gradient(to bottom, #0f0, #0d0);
+}
+
+.switches .switch { width: 40px; }
+.switches input:checked + .switch::after { left: 17px; }
+.icon-btn-container { text-align: center; }
+.icon-btn { transition:color .3s, background-color .3s, border .3s; }
+.icon-btn.title-btn { margin: 1px; }
+.icon-btn.title-btn i{
+  position: relative;
+  top: -5px;
+}
+.icon-btn.title-btn span {
+  top: 17px;
+  right: 1px;
+  position: absolute;
+  width: 30px;
+  height: 14px;
+  padding:0;
+  text-align: center;
+  line-height: 14px;
+  font-size: 11px;
+  padding-top:1px;
+}
+.icon-btn.title-btn.icon-medium i{
+  top: -5px;
+}
+.icon-btn.title-btn.icon-medium span {
+  top: 28px;
+  right: 5px;
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.icon-btn.btn-green span, .icon-btn.btn-turquoise span, .icon-btn.btn-aqua span,
+.icon-btn.btn-blue span, .icon-btn.btn-lavender span, .icon-btn.btn-red span,
+.icon-btn.btn-orange span, .icon-btn.btn-yellow span, .icon-btn.btn-grey span,
+.icon-btn.btn-black span, .icon-btn.btn-dark-grey span {
+  color:#fff;
+}
+
+.widget.buttons {
+  margin-top:0;
+}
+.dought-detail {
+  width: 100%;
+}
+
+#wrapper .fluid .building-container { 
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+
+.tab-example-info { margin-left: 20px; margin-right: 20px;  width: 80% }
+
+.todo .control {
+  position: relative;
+  width: 50%;
+  top: -10px;
+  display: inline-block;
+}
+.todo .control-title {
+  display: inline-block;
+  
+}

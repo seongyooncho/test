@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tenax Admin Theme</title>
+
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-ipad-retina.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone-retina.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-ipad.png" />
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-iphone.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- bootstrap -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/font-awesome-4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+	
+</head>
+<body>
+	
+	<div id="loading">
+		<div>
+			<div></div>
+		    <div></div>
+		    <div></div>
+		</div>
+	</div>
+
+	<div id="wrapper">
+		<div id="main">
+			<div class="container" id="main-container">
+				<div class="main-content">
+					<div class="fluid">
+						<div class="widget grid12">
+							<div class="widget-header">
+								<h2 class="page-title">
+                  <i class="fa fa-bar-chart-o"></i>일사 취득량 및 조명 사용량<span>겨울철 12월~2월 평균 시간대별 사용량</span>
+								</h2>
+								<div class="widget-controls">
+									<div class="dropdown">
+										<select name="one" class="dropdown-select">
+									    </select>
+									</div>
+								</div>
+							</div> <!-- /widget-header -->
+							<div class="chart-container line-ch">
+								<div class="chart-info">
+								</div>
+								<canvas id="lineChart" width="1200" height="600"></canvas>
+							</div>
+
+						</div> <!-- /widget -->
+
+					
+					</div> <!-- /fluid -->
+
+
+				</div> <!-- /main-content -->
+			</div>
+		</div> <!-- /main -->
+		
+	</div> <!-- /wrapper -->
+	<script type="text/javascript" src="js/prefixfree.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/Chart.js"></script>
+	<script type="text/javascript" src="js/jquery.hashchange.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easytabs.min.js"></script>
+	
+    <script src="../web/src/lib/thrift.js" type="text/javascript"></script>
+    <script src="../thrift/gen-js/LBN_Thrift_types.js" type="text/javascript"></script>
+    <script src="../thrift/gen-js/LBN_Thrift_Service.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		$(window).load(function(){
+			var mainW = $(window).height() -70;
+			$('.nav').css({ height : mainW })
+			$('.nav-logo').hide()
+			$('#loading').fadeOut(1000);
+			$('.nav-logo').fadeIn()
+		})
+		$(document).ready(function(){
+			
+			$(window).resize(function() {
+				var mainW = $(window).height() -70;
+		        $('.nav').css({ height : mainW })
+
+		  		mQuery();
+		    }); // Window resize
+
+
+			function mQuery() {
+				// Same as @media (max-width: 767px) -> hide the navigation
+		        if ($('.fluid [class*="grid"]').css('float') == 'none' ){
+					$('.nav').removeClass('show');
+				} else {
+					$('.nav').addClass('show');
+				}
+			}
+			mQuery();
+
+			// $('.nav').hide();
+			$('.nav-button').click(function(){
+				// $('.nav').toggleClass('show');
+				$('.nav').toggleClass('show')
+				//$('.nav').fadeToggle(function(){
+					
+				//})
+			})
+			$('.collapsible > a').click(function(){
+				$(this).parent().toggleClass('open')
+			})
+
+			$(".spinner").spinner({
+				icons: { down: "ui-icon-carat-1-s", up: "ui-icon-carat-1-n" },
+				min:1,
+				max:3
+			});
+			$("#spinner-table").on( "spin", function(event, ui) {
+				var val = ui.value;
+				if (val == 2) { $('#media-table tbody tr:last-child').fadeOut(); $('#media-table tbody tr:nth-child(2)').fadeIn() };
+				if (val == 1) { $('#media-table tbody tr:nth-child(2), #media-table tbody tr:last-child').fadeOut(); };
+				if (val == 3) { $('#media-table tbody tr').fadeIn(); };
+			});
+
+			$('#eTabs').easytabs();
+
+			$('.slider').slider();
+
+			$('.slider.range').slider({
+				range: true,
+			    max: 750,
+			    values: [ 75, 300 ],
+				slide: function( event, ui ) {
+			        $( "#amount-min" ).html("$" + ui.values[0]);
+			        $( "#amount-max" ).html("$" + ui.values[1]);
+			      }
+			});
+			$( "#amount-min" ).html( "$" + $( ".slider.range" ).slider( "values", 0));
+			$( "#amount-max" ).html( "$" + $( ".slider.range" ).slider( "values", 1));
+
+			$('.slider.range-min').slider({
+				range: "min",
+				min:50,
+				slide: function( event, ui ) {
+			        $('.slider.range-min > a.ui-slider-handle').html("<div class='range-tooltip'>$ " + $(".slider.range-min").slider("value") + "</div>")
+			      },
+			    stop: function( event, ui ) {
+			    	$('.range-tooltip').delay(1000).fadeOut();
+			    }
+			});
+			$( "#amount-block" ).html("Min: $" + $(".slider.range-min").slider( "option", "min"));
+			$('.slider.range-min > a.ui-slider-handle').hover(function(){
+				$('.slider.range-min > a.ui-slider-handle').html("<div class='range-tooltip'>$ " + $(".slider.range-min").slider("value") + "</div>")
+				$('.range-tooltip').delay(1000).fadeOut();
+			})
+
+			$( ".progressbar" ).progressbar({
+		      value: 37
+		    });
+
+
+		}) // Ready
+	</script>
+	<script type="text/javascript">
+    var chartColors = [
+      "green",
+      "blue",
+      "red",
+      "pink",
+      "orange",
+      "magenta",
+    ];
+
+    // THRIFT
+    var transport, protocol, client;
+    function initClient() {
+      var serverUrl = getParameterByName("thrift");
+      if (serverUrl === "") {
+        serverUrl = "http://localhost:9090";
+      }
+
+      var getAsync = getParameterByName("async");
+      if (getAsync === "true") {
+        async = true;
+      }
+
+      transport = new Thrift.Transport(serverUrl);
+      protocol  = new Thrift.Protocol(transport);
+      client = new LBN_Thrift_ServiceClient(protocol);
+    }
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    try {
+      initClient();
+    }
+    catch(err) {
+      console.log(err);
+    }
+
+
+
+		// Line Chart
+		var lineChartData = {
+			labels : [],
+			datasets : []
+		}
+    for (var i = 1; i < 25; i++) {
+      lineChartData.labels.push(""+i+":00");
+    }
+
+    var zoneChart;
+    try {
+      zoneChart = client.LBN_Thrift_GetZoneChart();
+      console.log("DD"+zoneChart);
+    } 
+    catch(err) {
+      zoneChart = [ 
+        new stLBN_ZoneChartData({
+          zone: "South Zone",
+          data: [
+            new stLBN_24hData({
+              title: "External Infiltration",
+              values: [
+                -0.25, -0.25, -0.25, -0.25, 
+                -0.25, -0.25, -0.25, -0.25, 
+                -0.25, -0.25, -0.25, -0.25, 
+                -0.25, -0.25, -0.25, -0.25, 
+                -0.25, -0.25, -0.25, -0.24, 
+                -0.23, -0.22, -0.21, -0.20
+              ],
+            }),
+            new stLBN_24hData({
+              title: "External Vent.",
+              values: [
+                0.00, 0.00, 0.00, 0.00, 
+                0.00, 0.00, -0.12, -0.25, 
+                -0.7, -0.75, -0.75, -0.75, 
+                -0.55, -0.55, -0.75, -0.75, 
+                -0.75, -0.40, -0.20, 0.00, 
+                0.00, 0.00, 0.00, 0.00
+              ],
+            }),
+            new stLBN_24hData({
+              title: "General Lighting",
+              values: [
+                0.00, 0.00, 0.00, 0.00, 
+                0.00, 0.00, 0.00, 0.50, 
+                0.05, 0.05, 0.05, 0.05, 
+                0.05, 0.05, 0.05, 0.05, 
+                0.35, 0.75, 0.75, 0.00, 
+                0.00, 0.00, 0.00, 0.00
+              ],
+            }),
+            new stLBN_24hData({
+              title: "Computer + Equip",
+              values: [
+                0.00, 0.00, 0.00, 0.00, 
+                0.00, 0.00, 0.00, 0.45, 
+                0.45, 0.45, 0.45, 0.45, 
+                0.45, 0.45, 0.45, 0.45, 
+                0.45, 0.45, 0.45, 0.45, 
+                0.00, 0.00, 0.00, 0.00
+              ],
+            }),
+            new stLBN_24hData({
+              title: "Occupancy",
+              values: [
+                0.00, 0.00, 0.00, 0.00, 
+                0.00, 0.00, 0.00, 0.10, 
+                0.20, 0.30, 0.30, 0.20, 
+                0.10, 0.10, 0.10, 0.10, 
+                0.10, 0.10, 0.00, 0.00, 
+                0.00, 0.00, 0.00, 0.00
+              ],
+            }),
+            new stLBN_24hData({
+              title: "Solar Gains Exterior Windows",
+              values: [
+                0.00, 0.00, 0.00, 0.00, 
+                0.00, 0.00, 0.00, 0.20, 
+                0.90, 1.75, 2.45, 2.70, 
+                2.70, 2.45, 1.80, 1.00, 
+                0.25, 0.00, 0.00, 0.00,
+                0.00, 0.00, 0.00, 0.00
+              ],
+            }),
+          ],
+        }),
+        new stLBN_ZoneChartData({
+          zone: "North Zone",
+          data: null,
+        }),
+      ] 
+      console.log(zoneChart);
+    }
+
+    for (var i = 0; i<zoneChart.length; i++) {
+      var $option = $("<option value='"+i+"'>"+zoneChart[i].zone+"</option>");
+      $(".dropdown select").append($option);
+    }
+
+    for (var i = 0; i<zoneChart[0].data.length; i++) {
+      var data = zoneChart[0].data[i];
+      var $data = $("<div class='chart-detail default "+chartColors[i]+"'>"+data.title+"</div>");
+      $(".chart-info").append($data);
+
+      lineChartData.datasets.push(
+				{
+					fillColor : "rgba(0,0,0,0.0)",
+					strokeColor : chartColors[i],
+					pointColor : "#fff",
+					pointStrokeColor : chartColors[i],
+          data : data.values
+				}
+      );
+    }
+
+
+		var myLine = new Chart(document.getElementById("lineChart").getContext("2d")).Line(lineChartData, {
+			bezierCurve : false,
+			scaleFontSize : 10,
+			scaleFontColor: "#929191",
+			animation: true,
+			scaleOverride : false,
+			scaleSteps : 0.5,
+			scaleStepWidth : 8,
+			scaleStartValue : -1.0,
+		});
+
+
+
+
+	</script>
+</body>
+</html>

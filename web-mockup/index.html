@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LBN Scheduler</title>
+
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-ipad-retina.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-iphone.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- bootstrap -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/font-awesome-4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/weather-icons-1.2.0/css/weather-icons.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/toastr.css">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/lbn.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+
+    <div id="loading">
+      <div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div id="wrapper">
+      <div id="top">
+        <div class="container">
+          <div class="nav-button">
+            <i class="fa fa-bars"></i>
+          </div>
+          <div class="main-logo"><a href="index.html"> Lubi-Net <span>Scheduler Admin</span></a></div>
+
+          <div class="profile">
+            <ul>
+              <li>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" onclick="return false;">
+                <i class="wi wi-day-lightning"></i>
+              </a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#"><i class="fa fa-bell"></i>Today's weather</a></li>
+              </ul>
+              </li>
+              <li>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" onclick="return false;">
+                <i class="fa fa-info"></i>
+                <span class="badge badge-profile badge-yellow">10</span>
+              </a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#"><i class="fa fa-user"></i> You have 10 new disaster information</a></li>
+              </ul>
+              </li>
+              <li><a href="#" onclick="return false;"><i class="fa fa-bar-chart-o"></i></a></li>
+              <li class="user">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" onclick="return false;">
+                <img class="profile-img">
+                <!--<img src="images/profile.jpg" class="profile-img">-->
+                <div class="user-info">Administrator<br>
+                  <span class="user-email">admin@etri.re.kr</span></div>
+                <div class="arrow"><i class="fa fa-angle-down"></i></div>
+              </a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#"><i class="fa fa-lock"></i> Change password</a></li>
+                <li><a href="login.html"><i class="fa fa-sign-out"></i> Log Out</a></li>
+              </ul>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- /container -->
+      </div> <!-- /top -->
+
+      <div id="main">
+        <div class="container-fluid" id="main-container">
+          <div class="nav"> <!-- added the class "show" to start with open menu -->
+            <ul>
+              <li class="active"><a href="#" onclick="return false;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+              <li><a href="#" onclick="return false;"><i class="fa fa-tags"></i> Scene</a></li>
+              <li><a href="#" onclick="return false;"><i class="fa fa-calendar"></i> Schedule</a></li>
+              <li><a href="#" onclick="return false;"><i class="fa fa-newspaper-o"></i> Context</a></li>
+              <li><a href="#" onclick="return false;"><i class="fa fa-bar-chart"></i> Energy</a></li>
+            </ul>
+            <div class="nav-logo">
+              <img src="images/etri.png" style="width:100px;" />
+              <img src="images/led.png" style="margin-left:10px;width:80px;" />
+            </div>
+          </div>
+          <div class="main-content">
+            <br>
+            <div class="intro">
+              <ul class="clearfix">
+                <li>
+                <div class="intro-content">
+                  <div class="switches" style="margin-right:0">
+                    <input type="checkbox" class="sl" id="switch-1" checked />
+                    <label class="switch sw1 yellow" for="switch-1"></label>
+                  </div>
+                  <div class="intro-info">
+                    Live Control<span>Direct change</span>
+                  </div> <!-- /intro-info -->
+                </div> <!-- /intro-content -->
+                </li>
+                <li>
+                <div class="intro-content">
+                  <div class="switches" style="margin-right:0">
+                    <input type="checkbox" class="sl" id="switch-2" checked />
+                    <label class="switch sw1 orange" for="switch-2"></label>
+                  </div>
+                  <div class="intro-info">
+                    Schedule<span>Automatic mode</span>
+                  </div> <!-- /intro-info -->
+                </div> <!-- /intro-content -->
+                </li>
+                <li>
+                <div class="intro-content">
+                  <div class="switches" style="margin-right:0">
+                    <input type="checkbox" class="sl" id="switch-3" checked />
+                    <label class="switch sw1 orange" for="switch-3"></label>
+                  </div>
+                  <div class="intro-info">
+                    Global<span>On/off entire lights</span>
+                  </div> <!-- /intro-info -->
+                </div> <!-- /intro-content -->
+                </li>
+                <li>
+                <div class="intro-content">
+                  <div class="circle">
+                    <div class="arc" id="arc-4">
+                      <div class="arc-in yellow"></div>
+                      <div class="arc-in arc-sec yellow"></div>
+                    </div>
+                    <i class="fa fa-bolt"></i>
+                  </div> <!-- /circle -->
+                  <div class="intro-info">
+                    384kW <span>Power consumption</span>
+                  </div> <!-- /intro-info -->
+                </div> <!-- /intro-content -->
+                </li>
+              </ul>
+            </div>
+
+
+            <div class="fluid">
+
+              <div class="widget grid9">
+                <div class="widget-controls" style="z-index:1;margin-right:10px;">
+                  <div class="dropdown">
+                    <select name="one" class="dropdown-select">
+                      <option value="">Overview</option>
+                      <option value="1">Residential</option>
+                      <option value="2">Office</option>
+                      <option value="3">Commercial</option>
+                      <option value="4">Facade</option>
+                      <option value="5">Parking</option>
+                      <option value="6">Road</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="building-container" style="background-image:url(images/3d.png);background-size:cover;background-position:center">
+                  <div class="chart-info" style="opacity:0">
+                    <div class="chart-detail up green">+2,045.71</div>
+                    <div class="chart-detail up blue">+1,207.05</div>
+                  </div>
+                  <canvas id="lineChart" width="600" height="300" style="opacity:0"></canvas>
+                  <div class="icon-btn-container">
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn btn-orange">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                    <a href="#" onclick="return false;" class="icon-btn title-btn">
+                      <i class="fa fa-lightbulb-o"></i>
+                      <span>#01</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div> <!-- /widget -->
+
+
+              <div class="widget grid3">
+                <!-- <div class="widget-header">
+                  <h2 class="page-title">
+                    <i class="fa fa-list"></i>Information<span>Selected</span>
+                  </h2>
+                </div>  widget-header 
+                -->
+                <div class="chart-container dou-ch">
+                  <div class="chart-header">
+                    <div class="dought-detail">
+                      <i class="fa fa-car"></i>
+                      <div class="d-detail-info">
+                        Parking<span>Available spaces</span>
+                      </div>
+                    </div>
+                  </div>
+                  <img src="images/floor.png" />
+                  <div class="chart-footer">
+                    <div class="dought-percent green">
+                      <span class="d-perc">40%</span><br><span class="d-detail">Green</span>
+                    </div>
+                    <div class="dought-percent blue">
+                      <span class="d-perc">25%</span><br><span class="d-detail">Blue</span>
+                    </div>
+                    <div class="dought-percent red">
+                      <span class="d-perc">14%</span><br><span class="d-detail">Red</span>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- /widget -->
+            </div> <!-- /fluid -->
+
+            <div class="fluid">
+              <div class="widget grid4">
+							<div class="todo">
+								<div class="todo-item blue">
+									<i class="fa fa-check"></i>
+                  <div class="control-title">
+                    Warm white
+                  </div>
+                  <div class="control">
+                    <div class="slider"></div>
+                  </div>
+									<div class="todo-date">Today</div>
+								</div>
+								<div class="todo-item green">
+									<i class="fa fa-check"></i>
+									Monthly status...
+									<div class="todo-date">09:00pm</div>
+								</div>
+								<div class="todo-item blue">
+									<i class="fa fa-check"></i>
+									Upgrade server OS
+									<div class="todo-date">03 Jun</div>
+								</div>
+								<div class="todo-item green">
+									<i class="fa fa-check"></i>
+									Weekly technical...
+									<div class="todo-date">28 May</div>
+								</div>
+								<div class="todo-item green">
+									<i class="fa fa-check"></i>
+									Project materials
+									<div class="todo-date">20 May</div>
+								</div>
+								<div class="todo-item yellow">
+									<i class="fa fa-check"></i>
+									Project status...
+									<div class="todo-date">15 May</div>
+								</div>
+								<div class="todo-item">
+									<i class="fa fa-check"></i>
+									Anual project...
+									<div class="todo-date">03 May</div>
+								</div>
+								<div class="todo-item yellow">
+									<i class="fa fa-check"></i>
+									Prepare project...
+									<div class="todo-date">26 Apr</div>
+								</div>
+							</div>
+                <div class="widget-content">
+                  <div id="eTabs">
+
+                    <ul class="etabs">
+                      <li class="tab"><a href="#tab1">Lorem Ipsum</a></li>
+                      <li class="tab"><a href="#tab2">Excepteur</a></li>
+                      <li class="tab"><a href="#tab3">Accusantium</a></li>
+                    </ul>
+
+                    <div class="tabsContent">
+
+                      <div id="tab1">
+                        <div class="tab-exmaple-title">Cool white</div>
+                        <div class="tab-example-info">
+                          <div class="slider range-min">
+                          </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="tab-exmaple-title">General Financial</div>
+                        <div class="tab-example-quad"></div>
+                        <div class="tab-example-info">
+                          Anna Watson <br> <span>Status: <span>Pending</span></span>
+                        </div>
+                        <div class="tab-example-date">
+                          03 Jun, 2013 <br> <span>05:10</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="tab-exmaple-title">General Financial</div>
+                        <div class="tab-example-quad"></div>
+                        <div class="tab-example-info">
+                          James Sky <br> <span>Status: <span>Pending</span></span>
+                        </div>
+                        <div class="tab-example-date">
+                          01 Jun, 2013 <br> <span>12:37</span>
+                        </div>
+                      </div> <!-- /tab1 -->
+
+                      <div id="tab2">
+                        <div class="tab-exmaple-title">Excepteur</div>
+                        <div class="tab-example-quad"></div>
+                        <div class="tab-example-info">
+                          John Doe <br> <span>Status: <span>Pending</span></span>
+                        </div>
+                        <div class="tab-example-date">
+                          04 Jun, 2013 <br> <span>03:20</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="tab-exmaple-title">Excepteur</div>
+                        <div class="tab-example-quad"></div>
+                        <div class="tab-example-info">
+                          Anna Watson <br> <span>Status: <span>Pending</span></span>
+                        </div>
+                        <div class="tab-example-date">
+                          03 Jun, 2013 <br> <span>05:10</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="tab-exmaple-title">Excepteur</div>
+                        <div class="tab-example-quad"></div>
+                        <div class="tab-example-info">
+                          James Sky <br> <span>Status: <span>Pending</span></span>
+                        </div>
+                        <div class="tab-example-date">
+                          01 Jun, 2013 <br> <span>12:37</span>
+                        </div>
+                      </div><!-- /tab2 -->
+
+                      <div id="tab3">
+                        <div class="tab-exmaple-title">Accusantium</div>
+                        <div class="tab-example-quad"></div>
+                        <div class="tab-example-info">
+                          John Doe <br> <span>Status: <span>Pending</span></span>
+                        </div>
+                        <div class="tab-example-date">
+                          04 Jun, 2013 <br> <span>03:20</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="tab-exmaple-title">Accusantium</div>
+                        <div class="tab-example-quad"></div>
+                        <div class="tab-example-info">
+                          Anna Watson <br> <span>Status: <span>Pending</span></span>
+                        </div>
+                        <div class="tab-example-date">
+                          03 Jun, 2013 <br> <span>05:10</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="tab-exmaple-title">Accusantium</div>
+                        <div class="tab-example-quad"></div>
+                        <div class="tab-example-info">
+                          James Sky <br> <span>Status: <span>Pending</span></span>
+                        </div>
+                        <div class="tab-example-date">
+                          01 Jun, 2013 <br> <span>12:37</span>
+                        </div>
+                      </div> <!-- /tab3 -->
+
+                    </div> <!-- /tabsContent -->
+                  </div> <!-- /eTabs -->
+                </div>
+              </div> 
+            </div>
+
+
+
+          </div> <!-- /main-content -->
+        </div>
+      </div> <!-- /main -->
+
+    </div> <!-- /wrapper -->
+    <script type="text/javascript" src="js/prefixfree.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/Chart.js"></script>
+    <script type="text/javascript" src="js/jquery.hashchange.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easytabs.min.js"></script>
+    <script type="text/javascript" src="js/toastr.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+  </body>
+</html>

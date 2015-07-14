@@ -1,0 +1,12 @@
+.dg .c input[type=text] {
+  line-height:normal;
+}
+.dg .c div {
+  box-sizing: content-box;
+}
+.dg.main .close-button {
+  display: none;
+}
+.dg .folder:nth-child(4) {
+  display: none;
+}

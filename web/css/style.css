@@ -1,0 +1,747 @@
+@import url("element.css");
+@import url("custom-jquery-ui.css");
+
+html {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+#stage {
+	width:100%;
+	height:100%;
+	position:absolute;
+}
+
+#bg {
+	position:absolute;
+	width:100%;
+	height:100%;
+	background: url(../img/bg.jpg);
+	background-size: cover;
+}
+
+#container {
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+
+#selection-indicator {
+	pointer-events: none;
+	position: absolute;
+	border: 1px dashed rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+#float-solar {
+	position: absolute;
+	pointer-events: none;
+}
+#float-floor {
+	position: absolute;
+	pointer-events: none;
+	background-color: rgba(255, 255, 255, 0.3);
+	width: 140px;
+	top: 60px;
+	right: 250px;
+	text-align: center;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	display: none;
+}
+
+#float-info .info-panel {
+	pointer-events: none;
+	position:absolute;
+	background-color: rgba(0,0,0,0.2);
+	padding: 2px;
+	display:none;
+}
+#float-info .info-panel.on {
+	display:block;
+}
+#float-info .info-bar {
+	display: inline-block;
+	width: 2px;
+	height: 20px;
+	background-color: white;
+	border: 1px solid #AAA;
+	opacity: 0.7;
+}
+#float-info .info-bar.info-ambient {
+}
+#float-info .info-bar.info-red {
+	background-color: red;
+}
+#float-info .info-bar.info-green {
+	background-color: green;
+}
+#float-info .info-bar.info-blue {
+	background-color: blue;
+}
+#float-info .info-bar.info-temp {
+}
+#float-info .info-bar.info-humid {
+}
+
+#navbar {
+	position: relative;
+	width: 100%;
+	height: 49px;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+#navbar .btn {
+	line-height:50px;
+}
+
+#navbar .btn.left{
+	display:inline-block;
+	width: 240px;
+	text-align: center;
+}
+
+#navbar .btn.right{
+	float:right;
+	width: 240px;
+	text-align: center;
+}
+
+#resetBtn {
+	color: rgba(255, 255, 255, 0.5);
+	border-color: rgba(255, 255, 255, 0.5);
+	position: relative;
+	top: -22px;
+	left: calc( 100% - 180px) ;
+}
+/*
+#simulateBtn {
+	color: rgba(255, 255, 255, 0.5);
+	border-color: rgba(255, 255, 255, 0.5);
+	padding-left: 10px;
+	padding-right: 10px;
+	position: relative;
+	top: -22px;
+	left: 20px;
+}
+#simulateBtn:hover {
+	background-color: #ed145b;
+	color: gray;
+}
+#simulateBtn span.dot {
+	display:inline-block;
+	margin-right: 6px;
+	width: 6px;
+	height: 6px;
+
+	border-radius: 3px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+
+	background-color: rgba(0, 0, 0, 0.1);
+}
+#simulateBtn.active {
+	background-color: #ed145b;
+	color: white;
+}
+#simulateBtn.active:hover {
+	background-color: transparent;
+	color: gray;
+	content: "Inactive";
+}
+#simulateBtn.active span.dot {
+	background-color: red;
+	border: 1px solid black;
+}
+*/
+#simulateBtn {
+	color: rgba(0, 0, 0, 0.3);
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: center;
+}
+#simulateBtn:hover {
+	background-color: #ed145b;
+	color: gray;
+}
+#simulateBtn span.dot {
+	display:inline-block;
+	margin-right: 6px;
+	width: 6px;
+	height: 6px;
+
+	border-radius: 3px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+
+	background-color: rgba(0, 0, 0, 0.1);
+}
+#simulateBtn.active {
+	background-color: #ed145b;
+	color: white;
+}
+#simulateBtn.active:hover {
+	background-color: transparent;
+	color: gray;
+	content: "Inauto";
+}
+#simulateBtn.active span.dot {
+	background-color: red;
+	border: 1px solid black;
+}
+
+#autoBtn {
+	color: rgba(0, 0, 0, 0.3);
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: center;
+}
+#autoBtn:hover {
+	background-color: #ed145b;
+	color: gray;
+}
+#autoBtn span.dot {
+	display:inline-block;
+	margin-right: 6px;
+	width: 6px;
+	height: 6px;
+
+	border-radius: 3px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+
+	background-color: rgba(0, 0, 0, 0.1);
+}
+#autoBtn.auto {
+	background-color: #ed145b;
+	color: white;
+}
+#autoBtn.auto:hover {
+	background-color: transparent;
+	color: gray;
+	content: "Inauto";
+}
+#autoBtn.auto span.dot {
+	background-color: red;
+	border: 1px solid black;
+}
+#activeBtn {
+	color: rgba(0, 0, 0, 0.3);
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: center;
+}
+#activeBtn:hover {
+	background-color: #ed145b;
+	color: gray;
+}
+#activeBtn span.dot {
+	display:inline-block;
+	margin-right: 6px;
+	width: 6px;
+	height: 6px;
+
+	border-radius: 3px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+
+	background-color: rgba(0, 0, 0, 0.1);
+}
+#activeBtn.active {
+	background-color: #ed145b;
+	color: white;
+}
+#activeBtn.active:hover {
+	background-color: transparent;
+	color: gray;
+	content: "Inactive";
+}
+#activeBtn.active span.dot {
+	background-color: red;
+	border: 1px solid black;
+}
+
+#navbar-title {
+	position: absolute;
+	width: calc(100% - 480px);
+	margin-left: 240px;
+	height: 100%;
+	line-height: 50px;
+	text-align: center;
+	font-size:18px;
+}
+#title-box {
+	display: inline-block;
+	height: 0;
+}
+#title-top {
+	top: -0.7em;
+	font-size: 0.7em;
+	color: black;
+}
+#title-box p{
+	position: relative;
+	height: 0;
+	margin: 0;
+}	
+#title-time {
+	top: 0.5em;
+	font-weight: normal;
+	font-size: 0.8em;
+}
+
+.drawer {
+	position: relative;
+	width: 100%;
+	background-color: rgba(60, 60, 60, 0.9);
+	display: none;
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+.drawer .container {
+	white-space: nowrap;
+}
+#sceneDrawer {
+	height: 120px;
+}
+#sceneDrawer .container {
+	height: 120px;
+}
+#scheduleDrawer {
+	height: 150px;
+}
+#scheduleDrawer .container {
+	height: 150px;
+}
+#ruleDrawer {
+	height: 120px;
+}
+#ruleDrawer .container {
+	height: 120px;
+}
+
+#timeline {
+	position: relative;
+	width: 1670px;
+	height: 30px;
+	margin: 14px auto 0 auto;
+	background-image: url(../img/timeline.png);
+	background-size: cover;
+}
+.timeline-dot {
+	width: 16px;
+	height: 30px;
+	position: absolute;
+	margin-top: 7px;
+	margin-left: 4px;
+	background-image: url(../img/timeline-dot.png);
+	background-size: cover;
+}
+.timeline-dot:hover {
+	background-image: url(../img/timeline-dot-hover.png);
+}
+
+#sceneDrawer .scene-item:hover {
+	background-color: rgba(30, 30, 30, 0.7);
+}
+#sceneDrawer .scene-item.preview {
+	background-color: rgba(30, 30, 30, 1.0);
+}
+
+.drawer-item {
+	display: inline-block;
+	overflow: hidden;
+	width: 180px;
+	height: 100%;
+	border-right: 1px solid rgba(255, 255, 255, 0.3);
+	background-color: rgba(30, 30, 30, 0.3);
+	text-align: center;
+	padding-top: 15px;
+}
+.drawer-item button {
+	color: rgba(255, 255, 255, 0.6);
+	border-color: rgba(255, 255, 255, 0.6);
+}
+.drawer-item h5 {
+	color: white;
+	text-shadow: 0 -1px 1px black;
+	margin: 0.2em;
+}
+.drawer-item label {
+	color: white;
+}
+.drawer-item p {
+	color: white;
+	text-shadow: 0 -1px 1px black;
+	margin: 0.2em;
+	margin-bottom: 10px;
+}
+#ruleDrawer .drawer-item p {
+	opacity: 0.7;
+	font-weight: normal;
+	font-size: 0.9em;
+	text-align: left;
+	white-space: pre-wrap;
+	padding-left: 6px;
+}
+
+#calendar {
+	width: 100%;
+	width: calc( 100% - 4px);
+}
+
+#addScene {
+	width: 120px;
+}
+
+.sidebar {
+	position: absolute;
+	background-color: rgba(255, 255, 255, 0.3);
+	width:239px;
+	top: 50px;
+	bottom:0;
+	overflow-y: auto;
+	box-shadow: 0 1px 1px rgba(255,255,255,0.3);
+}
+
+.sidebar.left {
+	border-right: 1px solid rgba(0,0,0,0.3);
+}
+.sidebar.right {
+	overflow: hidden;
+	
+	border-left: 1px solid rgba(0,0,0,0.3);
+	right: 0;
+}
+
+#stage.scene #sceneBtn {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+}
+#stage.scene #sceneDrawer {
+	display: block;
+}
+#stage.scene .sidebar {
+	top: 170px;
+}
+#stage.scene #controller {
+	top: 180px;
+}
+#stage.scene #float-floor {
+	top: 180px;
+}
+#stage.schedule #scheduleBtn {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+}
+#stage.schedule #scheduleDrawer {
+	display: block;
+}
+#stage.schedule .sidebar {
+	top: 200px;
+}
+#stage.schedule #controller {
+	top: 210px;
+}
+#stage.schedule #float-floor {
+	top: 210px;
+}
+#stage.schedule #weather-panel div:nth-child(6) {
+	display:none;
+}
+#stage.schedule #weather-panel div:nth-child(7) {
+	display:none;
+}
+#stage.schedule #weather-panel div:nth-child(8) {
+	display:none;
+}
+#stage.rule #ruleBtn {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+}
+#stage.rule #ruleDrawer {
+	display: block;
+}
+#stage.rule .sidebar {
+	top: 170px;
+}
+#stage.rule #controller {
+	top: 180px;
+}
+#stage.rule #float-floor {
+	top: 180px;
+}
+
+#sidebar-right {
+	display:none;
+}
+
+/* Controller */
+#controller {
+	/* display:none; */
+	position:absolute;
+	margin-top:40px;
+	top: 60px;
+	left: 250px;
+	width: 200px;
+/*	height: 300px;
+*/	border: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+	background-color: rgba(255, 255, 255, 0.3);
+}
+#controller .simple {
+	text-align:center;
+	height:30px;
+	line-height:30px;
+}
+#controller .labelPanel {
+	position:absolute;
+	top: -40px;
+	height: 40px;
+	width:100%;
+	background:rgba(0,0,0,0.1);
+	line-height:20px;
+	text-align: center;
+}
+/*#controller .labelPanel span:first-child{font-weight:500;}*/
+#controller .title {
+	text-align: center;
+	height:30px;
+	line-height:30px;
+	margin-top:10px;
+}
+#controller div .icon {
+	display:inline-block;
+	border: 1px solid rgba(0,0,0,1);
+	margin-right:5px;
+	width: 8px;
+	height: 8px;
+	background: rgba(0,0,0,0);
+}
+#controller .dimming .result {
+	text-align: center;
+}
+#controller .dimming .result span{
+	font-size: 48px;
+	color: rgba(0,0,0,0.3);
+}
+#controller .rgb {
+}
+#controller .move {
+  text-align: center;
+}
+#controller .move button {
+  width: 50px;
+  margin-bottom: 8px; 
+}
+#controller .slider-group {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#controller .slider-line{
+	height:30px;
+	line-height:30px;
+	vertical-align:center;
+}
+#controller .slider-group span{
+	display: inline-block;
+	width: 44px;
+	text-align:center;
+	font-size: 12px;
+	margin-bottom:10px;
+}
+#controller .slider-group .slider{
+	display: inline-block;
+	width: 100px;
+	box-shadow: 0 1px 1px rgba(255,255,255,0.7);
+}
+/**************/
+
+
+#logo {
+	position: absolute;
+	background: url(../img/logo.png);
+	background-size: cover;
+	width: 600px;
+	height: 50px;
+	bottom: 0;
+	left:50%;
+	margin-left:-300px;
+	margin-bottom: 16px;
+}
+
+.accordion h3 {
+	margin-left:20px;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+/*    font-weight: 300;
+*/	font-size:14px;
+	height: 50px;
+	line-height:50px;
+}
+
+.divider {
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+}
+
+.accordion .accordion h3 {
+	height: 30px;
+	line-height: 30px;
+}
+
+#arealist ol .ui-selecting { background: rgba(0,0,0,0.05); }
+#arealist ol .ui-selected { 
+	background: rgba(0,0,0,0.1); 
+	color: rgba(255,255,255,0.7);
+	border-bottom: 1px solid rgba(255,255,255,0.25);
+	box-shadow: 0 2px 2px rgba(0,0,0,0.1) inset;
+}
+#arealist ol .ui-selected span {color: rgba(255,255,255,0.5);}
+#arealist ol { list-style-type: none; margin: 0; padding: 0; }
+#arealist ol li {
+	padding: 0 20px 0 20px;
+	height: 30px; 
+	line-height:30px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size:14px;
+/*    font-weight: 300;
+*/}
+#arealist ol li:last-child {
+	border-bottom: none;
+}
+
+#arealist li span {float:right; color:rgba(0,0,0,0.7);}
+
+.floor-container {
+	margin: 0 10px 10px 28px;
+	border-radius: 15px;
+	border: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+}
+
+#information-panel {
+	font-size:14px;
+}
+#information-panel div div {
+	margin:12px 10px;
+}
+#information-panel .information {
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+#information-panel .information:last-child {
+	border:none;
+}
+
+#information-panel .information .title {
+/*	font-weight:300;
+*/	text-align:center;
+}
+#information-panel .information .graph {
+	background:url("../img/energy-graph-step-bg.png");
+	height:112px;
+}
+#information-panel .information .graph canvas {
+	position:relative;
+	top:2px;
+	width:219px;
+}
+#information-panel .information .info span:nth-child(3) {float:right;margin-left:10px;}
+#information-panel .information .info span:last-child {float:right;}
+#information-panel .information .info span:nth-child(2) {float:right;margin-left:10px;}
+#information-panel .information .info.center {text-align:center;}
+
+#information-panel .information .log {
+	border-radius:5px;
+	background:rgba(0,0,0,0.1);
+	height:300px;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.3) inset;
+	overflow-y:auto;
+}
+
+#energy-ruler{
+	position: absolute;
+	width: 239px;
+	height: 22px;
+	background:url('../img/ruler.png');
+	background-size: cover;
+	top: 131px;
+	left: -10px;
+}
+#energy-voltage{color:#2489b0;}
+#energy-current{color:#d73765;}
+#weather-temp{font-size:48px;}
+#weather-city{font-size:18px;/*font-weight:300;*/}
+#weather-currently{font-size:12px;/*font-weight:300;*/}
+.info.solar{color:#d73765;}
+
+#disaster-date{font-size:12px;line-height:18px;/*font-weight:500;*/}
+#log{padding:5px;}
+#log p{font-family:"Menlo", "Lucida Console", Monaco, monospace; margin:2px;font-size:11px;}
+
+#glcanvas {
+	position:absolute;
+	background:transparent;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.calYear {
+	display: none;
+}
+
+.dropdown-panel tr {
+	height: 30px;
+}
+.dropdown-panel td {
+	text-align: left;
+}
+.dropdown-panel th {
+	vertical-align: top;
+	line-height: 30px;
+	text-align: left;
+	border-bottom: 1px solid #aaa;
+}
+.dropdown-panel tr:first-child th { 
+	text-align: center;
+	border-bottom: 1px solid #aaa;
+}
+.dropdown-panel tr:last-child th {
+	border-bottom: none;
+}
+.dropdown-panel table {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #aaa;
+}
+.dropdown-panel {
+	text-align: center;
+}
+.dropdown-panel ul {
+	list-style-type: none;
+	padding-left: 0;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+#loginBtn {
+	display: none;
+}
+
+#stage.logout #activeBtn, 
+#stage.logout #autoBtn,
+#stage.logout #simulateBtn,
+#stage.logout .btn,
+#stage.logout #controller
+{
+	display: none;	
+	opacity: 0;
+}
+#stage.logout #loginBtn {
+	display: initial;
+}
+
+#sensor-controller table{
+	margin: auto 20px auto 20px;
+}
+
+#module-message {
+	margin: auto;
+}

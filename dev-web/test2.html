@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lubi-Net Scheduler</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+
+  </head>
+
+  <body data-spy="scroll" data-target="#top-nav" data-offset="70">
+
+    <script type="text/javascript" src="lib/dat.gui.min.js"></script>
+    <script>
+var GuiModule = function() {
+  this.Selected_Module = '#01';
+  this.Type = 10.1;
+  this.Message = "Hello";
+};
+
+var guiModule = new GuiModule();
+var gui = new dat.GUI({ });
+
+gui.add(guiModule, 'Selected_Module').listen();
+gui.add(guiModule, 'Type');
+gui.add(guiModule, 'Message').listen();
+
+
+var guiControl = gui.addFolder('Control');
+
+var cwController = guiControl.add(guiModule.control, 'Cool_White', 0, 100).listen();
+var wwController = guiControl.add(guiModule.control, 'Warm_White', 0, 100).listen();
+var colorController = guiControl.addColor(guiModule.control, 'Color').listen();
+
+    </script>
+
+  </body>
+</html>
+

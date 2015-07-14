@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tenax Admin Theme</title>
+
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-ipad-retina.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone-retina.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-ipad.png" />
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-iphone.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- bootstrap -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/font-awesome-4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+	
+</head>
+<body>
+	
+	<div id="loading">
+		<div>
+			<div></div>
+		    <div></div>
+		    <div></div>
+		</div>
+	</div>
+
+	<div id="wrapper">
+		<div id="top">
+			<div class="container">
+				<div class="nav-button">
+					<i class="fa fa-bars"></i>
+				</div>
+				<div class="main-logo"><a href="index.html"> tenax <span>Admin Template</span></a></div>
+
+				<div class="profile">
+					<ul>
+						<li>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" onclick="return false;">
+								<i class="fa fa-bell"></i>
+								<span class="badge badge-profile badge-green">4</span>
+							</a>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="#"><i class="fa fa-bell"></i> You have 4 new notifications</a></li>
+							</ul>						
+						</li>
+						<li>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" onclick="return false;">
+								<i class="fa fa-user"></i>
+								<span class="badge badge-profile badge-yellow">10</span>
+							</a>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="#"><i class="fa fa-user"></i> You have 10 new users</a></li>
+							</ul>
+						</li>
+						<li><a href="#" onclick="return false;"><i class="fa fa-bar-chart-o"></i></a></li>
+						<li>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" onclick="return false;">
+								<i class="fa fa-envelope"></i>
+								<span class="badge badge-profile badge-blue">8</span>
+							</a>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="#"><i class="fa fa-envelope"></i> You have 8 unread messages</a></li>
+							</ul>
+						</li>
+						<li class="user">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" onclick="return false;">
+								<img src="images/profile.jpg" class="profile-img">
+								<div class="user-info">John Doe<br>
+								<span class="user-email">johndoe@tenax.com</span></div>
+								<div class="arrow"><i class="fa fa-angle-down"></i></div>
+							</a>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="#"><i class="fa fa-user"></i> Edit Profile</a></li>
+		                        <li><a href="#"><i class="fa fa-calendar"></i> My Calendar</a></li>
+		                        <li><a href="login.html"><i class="fa fa-sign-out"></i> Log Out</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div> <!-- /container -->
+		</div> <!-- /top -->
+
+		<div id="main">
+			<div class="container" id="main-container">
+				<div class="nav"> <!-- added the class "show" to start with open menu -->
+					<ul>
+						<li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+						<li class="active"><a href="#" onclick="return false;"><i class="fa fa-tags"></i> Icons</a></li>
+						<li>
+							<a href="ui.html"><i class="fa fa-puzzle-piece"></i> UI Elements</a>
+						</li>
+						<li class="collapsible">
+							<a href="#" onclick="return false;"><i class="fa fa-copy"></i> Pages</a>
+							<span class="badge badge-nav badge-blue">2</span>
+							<ul class="sub-menu">
+								<li><a href="404.html">404</a></li>
+								<li><a href="login.html">Login</a></li>
+								<!-- <li><a href="#" onclick="return false;">Buttons</a></li> -->
+							</ul>
+						</li>
+						<li><a href="grid.html"><i class="fa fa-th"></i> Grid</a></li>
+						<li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+						<li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
+						<li>
+							<a href="chat.html"><i class="fa fa-comment"></i> Chat
+							</a>
+							<span class="badge badge-nav badge-blue">23</span>
+						</li>
+					</ul>
+					<button class="btn btn-live"><i class="fa fa-eye"></i> Live Site</button>
+					<div class="nav-logo">
+						tenax<br>
+						<span>Admin Template.</span>
+					</div>
+				</div>
+				<div class="main-content">
+					<div class="header">
+						<h1 class="page-title">
+							<i class="fa fa-tags"></i>Icons<span>buttons</span>
+						</h1>
+						<div class="search">
+							<input type="text" placeholder="Search...">
+                            <i class="fa fa-search"></i>
+						</div>
+					</div>
+					<div class="intro">
+						<ul class="clearfix">
+							<li>
+								<div class="intro-content">
+									<div class="circle">
+										<i class="fa fa-calendar"></i>
+									</div> <!-- /circle -->
+									<div class="intro-info">
+										June 4, 2013 <span>Tuesday, 12:06</span>
+									</div> <!-- /intro-info -->
+								</div> <!-- /intro-content -->
+							</li>
+							<li>
+								<div class="intro-content">
+									<div class="circle">
+										<div class="arc" id="arc-2"><div class="arc-in green"></div></div>
+										<i class="fa fa-bar-chart-o"></i>
+									</div> <!-- /circle -->
+									<div class="intro-info">
+										$754,28 <span>Total balance</span>
+									</div> <!-- /intro-info -->
+								</div> <!-- /intro-content -->
+							</li>
+							<li>
+								<div class="intro-content">
+									<div class="circle">
+										<div class="arc" id="arc-3"><div class="arc-in blue"></div></div>
+										<i class="fa fa-tag"></i>
+									</div> <!-- /circle -->
+									<div class="intro-info">
+										+364 <span>New orders</span>
+									</div> <!-- /intro-info -->
+								</div> <!-- /intro-content -->
+							</li>
+							<li>
+								<div class="intro-content">
+									<div class="circle">
+										<div class="arc" id="arc-4">
+											<div class="arc-in yellow"></div>
+											<div class="arc-in arc-sec yellow"></div>
+										</div>
+										<i class="fa fa-user"></i>
+									</div> <!-- /circle -->	
+									<div class="intro-info">
+										+1584 <span>New visitors</span>
+									</div> <!-- /intro-info -->
+								</div> <!-- /intro-content -->
+							</li>
+						</ul>
+					</div>
+					
+					<div class="fluid">
+
+						<div class="widget grid12">
+							<div class="widget-header">
+								<h2 class="page-title">
+									<i class="fa fa-table"></i>Small <span>icons</span>
+								</h2>
+							</div> <!-- /widget-header -->
+							<div class="widget-content">
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-adjust"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-anchor"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-turquoise"><i class="fa fa-archive"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-ban"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-bar-chart-o"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-aqua"><i class="fa fa-barcode"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-flask"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-bell"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-lavender"><i class="fa fa-bolt"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-book"></i></a>
+
+								<a href="#" onclick="return false;" class="icon-btn">
+									<i class="fa fa-exclamation"></i>
+									<span class="badge badge-blue">1</span>
+								</a>
+								<a href="#" onclick="return false;" class="icon-btn btn-red"><i class="fa fa-female"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-flag"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-gamepad"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn">
+									<i class="fa fa-gears"></i>
+									<span class="badge badge-yellow">3</span>
+								</a>
+								<a href="#" onclick="return false;" class="icon-btn btn-orange"><i class="fa fa-gift"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-glass"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-globe"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-grey"><i class="fa fa-group"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-headphones"></i></a>
+
+								<a href="#" onclick="return false;" class="icon-btn">
+									<i class="fa fa-heart"></i>
+									<span class="badge badge-green">10</span>
+								</a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-home"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-black"><i class="fa fa-inbox"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-info"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-key"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-dark-grey"><i class="fa fa-laptop"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-keyboard-o"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-leaf"></i></a>
+
+								<a href="#" onclick="return false;" class="icon-btn btn-light-grey"><i class="fa fa-legal"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-lightbulb-o"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-cutlery"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-code-fork"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-credit-card"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-magic"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-male"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-location-arrow"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-microphone"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-microphone-slash"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn"><i class="fa fa-mobile-phone"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-yellow"><i class="fa fa-lock"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-blue"><i class="fa fa-magnet"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn btn-green"><i class="fa fa-map-marker"></i></a>
+							</div>
+						</div><!-- /widget -->
+					
+					</div> <!-- /fluid -->
+					
+					<div class="fluid">
+
+						<div class="widget grid6">
+
+							<div class="widget-header">
+								<h2 class="page-title">
+									<i class="fa fa-bell"></i>Medium <span>icons</span>
+								</h2>
+							</div> <!-- /widget-header -->
+							<div class="widget-content">
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-briefcase"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-bullhorn"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium">
+									<i class="fa fa-calendar"></i>
+									<span class="badge badge-blue">5</span>
+								</a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-camera"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-check"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium">
+									<i class="fa fa-cloud"></i>
+									<span class="badge badge-green">2</span>
+								</a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-code"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-coffee"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-cog"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium">
+									<i class="fa fa-comment"></i>
+									<span class="badge badge-yellow">4</span>
+								</a>
+
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-money"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-arrows"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-power-off"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-check"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-pencil"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium btn-blue"><i class="fa fa-phone"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-picture-o"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium btn-green"><i class="fa fa-plane"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium"><i class="fa fa-thumb-tack"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-medium btn-yellow"><i class="fa fa-quote-left"></i></a>
+							</div>
+						</div> <!-- /widget -->
+
+
+						<div class="widget grid6">
+							<div class="widget-header">
+								<h2 class="page-title">
+									<i class="fa fa-tasks"></i>Big <span>icons</span>
+								</h2>
+							</div> <!-- /widget-header -->
+
+							<div class="widget-content pad10">
+								<a href="#" onclick="return false;" class="icon-btn icon-big"><i class="fa fa-apple"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big"><i class="fa fa-android"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big"><i class="fa fa-linux"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big">
+									<i class="fa fa-stack-overflow"></i>
+									<span class="badge badge-blue">5</span>
+								</a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big"><i class="fa fa-html5"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big"><i class="fa fa-css3"></i></a>
+								
+								<a href="#" onclick="return false;" class="icon-btn icon-big icon-color-aqua">
+									<i class="fa fa-twitter"></i>
+									<span class="badge badge-green">5</span>
+								</a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big"><i class="fa fa-youtube"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big"><i class="fa fa-github"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big btn-blue"><i class="fa fa-facebook"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big btn-green"><i class="fa fa-pinterest"></i></a>
+								<a href="#" onclick="return false;" class="icon-btn icon-big btn-yellow"><i class="fa fa-dribbble"></i></a>					
+						</div>
+
+						</div> <!-- /widget -->
+
+					</div> <!-- /fluid -->
+
+				</div> <!-- /main-content -->
+			</div>
+		</div> <!-- /main -->
+		
+	</div> <!-- /wrapper -->
+	<script type="text/javascript" src="js/prefixfree.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/Chart.js"></script>
+	<script type="text/javascript" src="js/jquery.hashchange.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easytabs.min.js"></script>
+	
+	<script type="text/javascript">
+		$(window).load(function(){
+			var mainW = $(window).height() -70;
+			$('.nav').css({ height : mainW })
+			$('.nav-logo').hide()
+			$('#loading').fadeOut(1000);
+			$('.nav-logo').fadeIn()
+		})
+		$(document).ready(function(){
+			
+			$(window).resize(function() {
+				var mainW = $(window).height() -70;
+		        $('.nav').css({ height : mainW })
+
+		  		mQuery();
+		    }); // Window resize
+
+
+			function mQuery() {
+				// Same as @media (max-width: 767px) -> hide the navigation
+		        if ($('.fluid [class*="grid"]').css('float') == 'none' ){
+					$('.nav').removeClass('show');
+				} else {
+					$('.nav').addClass('show');
+				}
+			}
+			mQuery();
+
+			// $('.nav').hide();
+			$('.nav-button').click(function(){
+				// $('.nav').toggleClass('show');
+				$('.nav').toggleClass('show')
+				//$('.nav').fadeToggle(function(){
+					
+				//})
+			})
+			$('.collapsible > a').click(function(){
+				$(this).parent().toggleClass('open')
+			})
+
+			$(".spinner").spinner({
+				icons: { down: "ui-icon-carat-1-s", up: "ui-icon-carat-1-n" },
+				min:1,
+				max:3
+			});
+			$("#spinner-table").on( "spin", function(event, ui) {
+				var val = ui.value;
+				if (val == 2) { $('#media-table tbody tr:last-child').fadeOut(); $('#media-table tbody tr:nth-child(2)').fadeIn() };
+				if (val == 1) { $('#media-table tbody tr:nth-child(2), #media-table tbody tr:last-child').fadeOut(); };
+				if (val == 3) { $('#media-table tbody tr').fadeIn(); };
+			});
+
+			$('#eTabs').easytabs();
+
+			$('.slider').slider();
+
+			$('.slider.range').slider({
+				range: true,
+			    max: 750,
+			    values: [ 75, 300 ],
+				slide: function( event, ui ) {
+			        $( "#amount-min" ).html("$" + ui.values[0]);
+			        $( "#amount-max" ).html("$" + ui.values[1]);
+			      }
+			});
+			$( "#amount-min" ).html( "$" + $( ".slider.range" ).slider( "values", 0));
+			$( "#amount-max" ).html( "$" + $( ".slider.range" ).slider( "values", 1));
+
+			$('.slider.range-min').slider({
+				range: "min",
+				min:50,
+				slide: function( event, ui ) {
+			        $('.slider.range-min > a.ui-slider-handle').html("<div class='range-tooltip'>$ " + $(".slider.range-min").slider("value") + "</div>")
+			      },
+			    stop: function( event, ui ) {
+			    	$('.range-tooltip').delay(1000).fadeOut();
+			    }
+			});
+			$( "#amount-block" ).html("Min: $" + $(".slider.range-min").slider( "option", "min"));
+			$('.slider.range-min > a.ui-slider-handle').hover(function(){
+				$('.slider.range-min > a.ui-slider-handle').html("<div class='range-tooltip'>$ " + $(".slider.range-min").slider("value") + "</div>")
+				$('.range-tooltip').delay(1000).fadeOut();
+			})
+
+			$( ".progressbar" ).progressbar({
+		      value: 37
+		    });
+
+		}) // Ready
+	</script>
+	<script type="text/javascript">
+		// Line Chart
+		var lineChartData = {
+			labels : ["2007","2008","2009","2010","2011","2012","2013"],
+			datasets : [
+				{
+					fillColor : "rgba(143,182,82,0.12)",
+					strokeColor : "#90b753",
+					pointColor : "#fff",
+					pointStrokeColor : "#90b753",
+					data : [40,79,61,70,85,58,76]
+				},
+				{
+					fillColor : "rgba(127,176,190,0.3)",
+					strokeColor : "7fb0be",
+					pointColor : "#fff",
+					pointStrokeColor : "#72a9bc",
+					data : [5,20,55,23,30,16,21]
+				}
+			]
+			
+		}
+
+		var myLine = new Chart(document.getElementById("lineChart").getContext("2d")).Line(lineChartData, {
+			bezierCurve : false,
+			scaleFontSize : 10,
+			scaleFontColor: "#929191",
+			animation: false,
+			scaleOverride : true,
+			scaleSteps : 5,
+			scaleStepWidth : 20,
+			scaleStartValue : 0,
+		});
+
+
+		// Doughnut Chart
+		var doughnutData = [
+			{
+				value: 40,
+				color:"#90b753"
+			},
+			{
+				value : 25,
+				color : "#72a9bc"
+			},
+			{
+				value : 14,
+				color : "#ff5764"
+			},
+			{
+				value : 21,
+				color : "transparent"
+			}
+		];
+
+		var myDoughnut = new Chart(document.getElementById("doughtChart").getContext("2d")).Doughnut(doughnutData, {
+			segmentStrokeColor : "rgba(0,0,0,0.1)",
+			percentageInnerCutout : 60,
+			animation : false
+		});
+	
+	</script>
+</body>
+</html>
